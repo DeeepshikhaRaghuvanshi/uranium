@@ -34,11 +34,6 @@ router.get('/test-me', function (req, res) {
 
 
 
-
-
-
-
-
 router.get('/hello', function (req, res) {
     res.send('Module 4 of my Assignment')
 
@@ -70,6 +65,9 @@ console.log("Array of first 10 odd numbers :");
    console.log("An object containing key value pairs using fromPair function :")
    console.log(obj);
 });
+
+});
+
 
 
 
