@@ -2,8 +2,50 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    res.send('My first ever api!')
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+
+
+router.post('/players', function (req, res) {
+
+    for(let i=0;i<players.length;i++){
+    if(req.body.name==players[i].name){
+
+      return  res.send({msg:"A player exists with such name "})
+    }
+    else 
+    players.push(req.body)
+    return res.send({data : players})
+    }
+   
 });
 
 module.exports = router;
