@@ -72,19 +72,14 @@ const getBooksInYear= async function (req, res) {
 
 // const getXINRBooks= async function (req, res) {
 
-//     for(let keyName in BookModel.price){
-
-//         if(indianPrice == "Rs500"){
-//             res.send({msg : BookModel.select()})
-//         }
-//     }
+    
  
-//     // let savedData= await BookModel.find({     price : { indianPrice : { $in: ["Rs100","Rs500"] }  }   }).select({bookName : 1, _id :0})
-//     // res.send({msg: savedData})
-//     // console.log(savedData)
+//     let savedData= await BookModel.find({  price.indianPrice : "Rs500"   }).select({bookName : 1, _id :0})
+//     res.send({msg: savedData})
+//     console.log(savedData)
   
 
-
+// }
 
 
 
