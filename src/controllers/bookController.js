@@ -45,42 +45,16 @@ const getBooksInYear= async function (req, res) {
 
 
 
-// const getParticularBooks= async function (req, res) {
+const getParticularBooks= async function (req, res) {
 
-// //    for(let keyName in req.body){
-    
-// //     if(keyName == req.body[keyName]){
-// //         let savedData = await BookModel.find().select
-// //         res.send({msg: savedData})
-
-// //     }
-// //     // let savedData= await BookModel.find({keyName : req.body[keyName]} ).select({bookName : 1, _id :0})
-// //   console.log(keyName)
-// //   console.log( req.body[keyName])
-  
-// // }
-// // 
-// //
-// for(let k in req.body){
-
-//     let savedData= await BookModel.find({k :"Book11"}).select({bookName : 1, _id :0})
-//     console.log(savedData)
-// }
- 
- 
-
-// }
+    let savedData= await BookModel.find(req.body).select()
+    res.send({msg: savedData})
+ }
 
 
 
 
-
-
-// getXINRBooks- request to return all books who have an Indian price tag of “100INR” or “200INR” or “500INR” 
-
-
-
-
+ // getXINRBooks- request to return all books who have an Indian price tag of “100INR” or “200INR” or “500INR” 
 
 
 const getXINRBooks= async function (req, res) {
@@ -112,6 +86,6 @@ const getRandomBooks= async function (req, res) {
 module.exports.createBook= createBook
 module.exports.bookList= bookList
 module.exports.getBooksInYear= getBooksInYear
-// module.exports.getParticularBooks= getParticularBooks
+module.exports.getParticularBooks= getParticularBooks
 module.exports.getXINRBooks=getXINRBooks
 module.exports.getRandomBooks = getRandomBooks
