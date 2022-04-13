@@ -29,7 +29,7 @@ const bookList= async function (req, res) {
 const getBooksInYear= async function (req, res) {
 
  
-    let savedData= await BookModel.find({year : req.body.year} ).select({bookName : 1, _id :0})
+    let savedData= await BookModel.find({year : req.body.year} ).select()
     res.send({msg: savedData})
   
 }
@@ -45,16 +45,29 @@ const getBooksInYear= async function (req, res) {
 
 
 
-
 // const getParticularBooks= async function (req, res) {
 
-//    for(let keyName in req.body){
+// //    for(let keyName in req.body){
     
+// //     if(keyName == req.body[keyName]){
+// //         let savedData = await BookModel.find().select
+// //         res.send({msg: savedData})
+
+// //     }
+// //     // let savedData= await BookModel.find({keyName : req.body[keyName]} ).select({bookName : 1, _id :0})
+// //   console.log(keyName)
+// //   console.log( req.body[keyName])
   
-//    let savedData= await BookModel.find({keyName : req.body[keyName]} ).select({bookName : 1, _id :0})
-//     res.send({msg: savedData})
-  
+// // }
+// // 
+// //
+// for(let k in req.body){
+
+//     let savedData= await BookModel.find({k :"Book11"}).select({bookName : 1, _id :0})
+//     console.log(savedData)
 // }
+ 
+ 
 
 // }
 
@@ -70,16 +83,16 @@ const getBooksInYear= async function (req, res) {
 
 
 
-// const getXINRBooks= async function (req, res) {
+const getXINRBooks= async function (req, res) {
 
     
  
-//     let savedData= await BookModel.find({  price.indianPrice : "Rs500"   }).select({bookName : 1, _id :0})
-//     res.send({msg: savedData})
-//     console.log(savedData)
+    let savedData= await BookModel.find({  "price.indianPrice": "Rs500"   }).select()
+    res.send({msg: savedData})
+    console.log(savedData)
   
 
-// }
+}
 
 
 
@@ -100,5 +113,5 @@ module.exports.createBook= createBook
 module.exports.bookList= bookList
 module.exports.getBooksInYear= getBooksInYear
 // module.exports.getParticularBooks= getParticularBooks
-// module.exports.getXINRBooks=getXINRBooks
+module.exports.getXINRBooks=getXINRBooks
 module.exports.getRandomBooks = getRandomBooks

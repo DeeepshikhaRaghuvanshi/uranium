@@ -17,7 +17,7 @@ router.post("/getBooksInYear", BookController.getBooksInYear)
 
 // router.post("/getParticularBooks", BookController.getParticularBooks)
 
-// router.get("/getXINRBooks", BookController.getXINRBooks)
+router.get("/getXINRBooks", BookController.getXINRBooks)
 
 
 router.get("/getRandomBooks", BookController.getRandomBooks)
