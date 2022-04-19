@@ -42,22 +42,31 @@ const getBooks = async function (req,res){
 
 const updateBooks = async function(req,res){
 
+  let id = await publisherModel.find( {publisherName : { $in  : ['Penguin' , 'Harper Collins']}}).select({_id : 1})
+ console.log(id)
 
-      let updatedKey = await bookModel.updateMany({ $or : [{ publisher_id :"625b98399e40cd03012df0b2"},{publisher_id :"625bbedaf60fc00202fef7a4"}]} , {isHardCover : true},{upsert:true,new:true})
+ let arrNew = [];
 
-      let authId = await authorModel.find({rating : {$gt : 3.5}}).select({_id : 1});
-      const id = authId.map(a=>a._id)
-     
+ for(let i=0;i<id.length;i++){
+   let x = id[i]._id;
+   arrNew.push(x)
+ }
 
-      for(let i=0;i<id.length;i++){
-        let x = id[i];
-        const bookUpdated = await bookModel.updateMany({author_id : x},{$inc :{ price : 10}})
-      }
+ let updatedBooks = await bookModel.updateMany({publisher_id : {$in : arrNew}} , {_isHardCover : true})
+ res.send({data : updatedBooks})
 
-      let updatedBooks = await bookModel.find().populate('author_id publisher_id');
-      res.send({msg : updatedBooks})
+ let authId = await authorModel.find({rating : {$gt : 3.5}}).select({_id : 1});
 
+ let authidNew = [];
 
+ for(let i=0;i<authId.length;i++){
+   let x = authId[i];
+   authidNew.push(x)
+
+ }
+
+ let updatedPrice = await bookModel.updateMany({ author_id : {$in : authidNew}   },{ $inc : { price : 10}})
+ console.log(updatedPrice)
 
 }
 
