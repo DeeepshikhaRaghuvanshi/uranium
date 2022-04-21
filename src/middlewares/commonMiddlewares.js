@@ -8,8 +8,7 @@ const mid1= function ( req, res, next) {
      return   res.send("Missing a Mandatory Header")
     }
     else
-    res.header('isFreeAppUser', req.headers["isfreeappuser"] )
-
+    // req.body["isFreeAppUser"]=req.headers.isfreeappuse;
     next();
 }
 
